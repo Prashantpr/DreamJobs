@@ -1,0 +1,7 @@
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_Entity\bin\Debug\DJ_Entity.dll
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_Entity\bin\Debug\DJ_Entity.pdb
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_Entity\bin\Debug\CRM.Entity.dll
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_Entity\bin\Debug\CRM.Entity.pdb
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_Entity\obj\Debug\DJ_Entity.csprojResolveAssemblyReference.cache
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_Entity\obj\Debug\DJ_Entity.dll
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_Entity\obj\Debug\DJ_Entity.pdb
