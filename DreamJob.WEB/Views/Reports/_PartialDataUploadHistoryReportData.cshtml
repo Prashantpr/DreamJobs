@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DJ_Entity.QuestionPaper>
+
+
+<table class="table table-bordered" >
+    <thead>
+        <tr>
+            <th colspan="7" class="bg-light-blue-gradient">
+                <span id="spnReportTitle"></span>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                SN
+            </th>
+            <th>
+                QuestionPaperID
+            </th>
+            <th>
+                Job Title
+            </th>
+            <th>
+                Uploaded File
+            </th>
+            <th>
+                File Upload Date and Time
+            </th>
+            <th>
+                File Uploaded By
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int sn = 0;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-right">
+                    @{++sn;}
+                    @sn<b>.</b>
+                </td>
+                <td class="text-right">@Html.DisplayFor(modelItem => item.QuestionPaperID)</td>
+                <td>@Html.DisplayFor(modelItem => item.AppliedJob.JobTitle)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadedFilePath)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.CreateDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                   
+                </td>
+                <td>
+                    @*<a class="btn btn-social btn-default btn-sm" href="javascript:void(0);" onclick="DownloadUploadedData(@item.QuestionPaperID)"><i class="fa fa-download"></i> Download Data</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

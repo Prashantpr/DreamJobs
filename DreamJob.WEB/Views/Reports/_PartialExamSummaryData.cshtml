@@ -1,0 +1,97 @@
+﻿@using System.Data
+@model DataTable
+
+
+<table class="table table-bordered" >
+    <thead>
+        <tr>
+            <th colspan="9" class="bg-light-blue-gradient">
+                <span id="spnReportTitle"></span>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                SN
+            </th>
+            <th>
+                Applicant ID
+            </th>
+            <th>
+                Applicant Name
+            </th>
+            <th>
+                Father's Name
+            </th>
+            <th>
+                Job Title
+            </th>
+            <th>
+                Exam Date
+            </th>
+            <th>
+                Marks Obtained
+            </th>
+            <th>
+                Evaluated By
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int sn = 0;}
+        @foreach (DataRow item in Model.Rows)
+        {
+            <tr>
+                <td class="text-right">
+                    @{++sn;}
+                    @sn<b>.</b>
+                </td>
+                <td class="text-right">@Html.Raw(item["ApplicantID"].ToString())</td>
+                <td>@Html.Raw(item["ApplicantName"].ToString())</td>
+                <td>
+                    @Html.Raw(item["FatherName"].ToString())
+                </td>
+                <td>@Html.Raw(item["JobTitle"].ToString())
+                </td>
+                <td>
+                   @Html.Raw(item["ExamStartDateTime"].ToString())
+                   
+                </td>
+                <td>
+                    @Html.Raw(item["MarksObtained"].ToString())
+                </td>
+                <td>
+                    @Html.Raw(item["EvaluatedBy"].ToString())
+                </td>
+                <td>
+                    <a class="btn btn-social btn-default btn-sm" href="javascript:void(0);" data-toggle="modal" data-target="#modal-xl" onclick="GetExamDetail(@item["ApplicantID"].ToString(),@item["AttemptID"].ToString())"><i class="fa fa-download"></i> Detail</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="modal-xl">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4><span id="ResultSummary"></span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="ExamDetail"></div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                @*<button type="button" class="btn btn-primary"></button>*@
+                <a></a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

@@ -1,0 +1,88 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Font Awesome -->
+    @*<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">*@
+    <link rel="stylesheet" href="@Url.Content("~/Content/plugins/fontawesome-free/css/all.min.css")">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/plugins/datepicker/datepicker3.css")">
+    <!-- overlayScrollbars -->
+    @*<link rel="stylesheet" href="../../dist/css/adminlte.min.css">*@
+    <link rel="stylesheet" href="@Url.Content("~/Content/dist/css/adminlte.min.css")">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed text-sm">
+    <input type="hidden" id="hdnHostUrl" value="@(Request.Url.GetLeftPart(UriPartial.Authority)+Request.ApplicationPath)" />
+    <script type="text/javascript">
+        var hostUrl = document.getElementById("hdnHostUrl").value;
+
+    </script>
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Navbar -->
+        @Html.Partial("_TopNavbar")
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="../../index3.html" class="brand-link">
+                @*<img src="../../dist/img/AdminLTELogo.png"
+                    alt="Logo"
+                    class="brand-image img-circle elevation-3"
+                    style="opacity: .8">*@
+                <span class="brand-text font-weight-light">Dream Jobs Notification</span>
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                @{Html.RenderPartial("_SideNavigation");}
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 1.0.0
+            </div>
+            <strong>Copyright &copy; 2020 <a href="#">Dream Jobs Notifications</a>.</strong> All rights
+            reserved.
+        </footer>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    @*<script src="../../plugins/jquery/jquery.min.js"></script>*@
+    <script src="@Url.Content("~/Content/plugins/jquery/jquery.min.js")"></script>
+    <!-- Bootstrap 4 -->
+    @*<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+    <script src="@Url.Content("~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js")"></script>
+    <!-- AdminLTE App -->
+    @*<script src="../../dist/js/adminlte.min.js"></script>*@
+    <script src="@Url.Content("~/Content/dist/js/adminlte.min.js")"></script>
+    <!-- AdminLTE for demo purposes -->
+    @*<script src="../../dist/js/demo.js"></script>*@
+    <script src="@Url.Content("~/Content/dist/js/demo.js")"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,12 @@
+﻿@model System.Data.DataTable
+
+<table class="table table-bordered">
+    <tr>
+        <th>Full Marks</th>
+        <td>@Model.Rows[0]["FullMarks"].ToString()</td>
+        <th>Marks Obtained</th>
+        <td>@Model.Rows[0]["MarksObtained"].ToString()</td>
+        <th>Selection Status</th>
+        <td>@Html.Raw( string.Format("{0}{1}{2}", Model.Rows[0]["SelectionStatus"].ToString().ToUpper().Equals("SELECTED") ? "<span class='badge bg-success'>" : "<span class='badge bg-danger'>", Model.Rows[0]["SelectionStatus"].ToString(), "</span>"))</td>
+    </tr>
+</table>

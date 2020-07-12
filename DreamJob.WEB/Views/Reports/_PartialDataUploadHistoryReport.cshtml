@@ -1,0 +1,30 @@
+﻿
+
+@using (Html.BeginForm("DataUploadHistory", "Reports", FormMethod.Post, new { id = "frmHistory" }))
+{
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    
+                    <div class="row">
+                        <div class="col-md-1">Job Type</div>
+                        <div class="col-md-3">
+                            @Html.DropDownList("ddlJobType", (SelectList)ViewBag.Jobs, "Select  Job Type", new { @class = "form-control select2", style = "width:100%", data_placeholder = "Select Job Type" })
+                        </div>
+                        <div class="col-md-4">
+                            <input type="button" name="btnShow" onclick="ShowUploadHistory();" value="Show History" class="btn btn-primary" />
+                            @*<input type="button" onclick="exportexcel();" value="Export to excel" class="btn btn-warning" />*@
+                        </div>
+                        </div>
+                    </div>
+                <div class="card-body">
+                    <div id="reportData"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+} 
+

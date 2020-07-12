@@ -1,0 +1,99 @@
+﻿@model IEnumerable<DJ_Entity.Registration>
+@{
+    ViewBag.Title = "Registered Applicants";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("RegisteredApplicants", "Admin", FormMethod.Post, new { id = "RegistrationForm" }))
+{
+            <div class="row">
+                <div class="col-2">Start Date</div>
+                <div class="col-2"><input class="form-control" placeholder="(mm/dd/yyyy)" title="Reg Date From" id="FromDate" name="FromDate" /></div>
+                <div class="col-2">End Date</div>
+                <div class="col-2"><input class="form-control" placeholder="(mm/dd/yyyy)" title="Reg Date To" id="ToDate" name="ToDate" /></div>
+                <div class="col-2"><input type="submit" value="Show" class="btn btn-primary" /> </div>
+
+            </div>
+            <div id="regdApplicants">
+                @Html.Partial("_RegisteredApplicants")
+            </div>
+            }
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+</section>
+<!-- /.content -->
+@section scripts{
+    <script src="@Url.Content("~/Content/plugins/datepicker/bootstrap-datepicker.js")"></script>
+    <script>
+        $(function () {
+
+
+
+            var date = new Date();
+            var d = new Date();
+            d.setDate(date.getDate() - 0);
+
+            var sd = new Date();
+            sd.setDate(date.getDate() - 120);
+
+
+
+            //Date picker
+            $('#FromDate').datepicker({
+                autoclose: true
+                , dateFormat: 'yyyy-mm-dd',
+                endDate: d,
+                startDate: sd
+            });
+
+            $('#ToDate').datepicker({
+                autoclose: true
+                , dateFormat: 'yyyy-mm-dd',
+                endDate: d,
+                startDate: sd
+            });
+
+
+        });
+    </script>
+}
+

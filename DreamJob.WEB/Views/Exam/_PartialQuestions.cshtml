@@ -1,0 +1,76 @@
+﻿@model DJ_Entity.ApplicantExamVM
+
+@Html.HiddenFor(m => m.ApplicantAttempt.Applicant.ApplicantID)
+@Html.HiddenFor(m => m.ApplicantAttempt.AttemptID)
+@foreach (DJ_Entity.ApplicantAnswer QA in Model.ApplicantAnswers)
+{
+    <div class="card card-gray">
+        <div class="card-header">
+            <h3 class="card-title">@{var h=QA.Question.QNO.ToString()=="0"?"":QA.Question.QNO +". ";} @Html.Raw(h) @QA.Question.Question</h3>
+            
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="card-body">
+
+            @if (!String.IsNullOrEmpty(QA.Question.A))
+            {
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" value="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"A")" name="@String.Format("Q{0}",QA.Question.QuestionID)" id="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"A")" @Html.Raw("A" == QA.AnswerByApplicant ? "checked" : "")>
+                        (A) @QA.Question.A
+                    </label>
+                </div>
+            }
+            @if (!String.IsNullOrEmpty(QA.Question.B))
+            {
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" value="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"B")" name="@String.Format("Q{0}",QA.Question.QuestionID)" id="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"B")" @Html.Raw("B" == QA.AnswerByApplicant ? "checked" : "")>
+                        (B) @QA.Question.B
+                    </label>
+                </div>
+            }
+            @if (!String.IsNullOrEmpty(QA.Question.C))
+            {
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" value="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"C")" name="@String.Format("Q{0}",QA.Question.QuestionID)" id="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"C")" @Html.Raw("C" == QA.AnswerByApplicant ? "checked" : "")>
+                        (C) @QA.Question.C
+                    </label>
+                </div>
+            }
+            @if (!String.IsNullOrEmpty(QA.Question.D))
+            {
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" value="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"D")" name="@String.Format("Q{0}",QA.Question.QuestionID)" id="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"D")" @Html.Raw("D" == QA.AnswerByApplicant ? "checked" : "")>
+                        (D) @QA.Question.D
+                    </label>
+                </div>
+            }
+            @if (!String.IsNullOrEmpty(QA.Question.E))
+            {
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" value="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"E")" name="@String.Format("Q{0}",QA.Question.QuestionID)" id="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"E")" @Html.Raw("E" == QA.AnswerByApplicant ? "checked" : "")>
+                        (E) @QA.Question.E
+                    </label>
+                </div>
+            }
+
+        </div>
+
+        <div class="card-footer">
+            @if (QA.Question.QNO.ToString() != "0")
+            { 
+            <div class="form-check">
+                <label class="form-check-label text-gray">
+                    <input class="form-check-input" type="radio" value="@String.Format("{0}","NA")" name="@String.Format("Q{0}",QA.Question.QuestionID)" id="@String.Format("Q_{0}_{1}",QA.Question.QuestionID,"NA")">
+                    Reset my response (I don't know answer of this question)
+                </label>
+            </div>
+            }
+        </div>
+    </div>
+}

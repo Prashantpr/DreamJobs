@@ -1,0 +1,142 @@
+﻿@model DJ_Entity.Registration
+@{
+    Layout = "~/Views/Shared/_RegistrationLayout.cshtml";
+    
+}
+
+<p class="login-box-msg">Register a new membership</p>
+@using (Html.BeginForm("Index", "Registration", FormMethod.Post, new { id = "RegistrationForm" }))
+{
+
+    @Html.AntiForgeryToken()
+    <div style="border: 1px solid red">
+                                @*@ViewBag.Message*@
+                                @Html.ValidationSummary(true)
+                            </div>
+
+    @Html.ValidationMessageFor(m => m.AppliedJob.JobID, "", new { @class = "text-red" })
+    <div class="input-group mb-3">
+        @*<select name="JobTitle" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                <option data-select2-id="0">Select Job Type</option>
+                <option data-select2-id="3">Alabama</option>
+                <option data-select2-id="46">Alaska</option>
+                <option data-select2-id="47">California</option>
+                <option data-select2-id="48">Delaware</option>
+                <option data-select2-id="49">Tennessee</option>
+                <option data-select2-id="50">Texas</option>
+                <option data-select2-id="51">Washington</option>
+            </select>*@
+        @Html.DropDownListFor(m => m.AppliedJob.JobID, (SelectList)ViewBag.Jobs, "Select  Job Type", new { @class = "form-control select2", style = "width:100%", data_placeholder = "Select Job Type" })
+    </div>
+    @Html.ValidationMessageFor(m => m._Applicant.ApplicantName, "", new { @class = "text-red" })
+    <div class="input-group mb-3">
+        @*<input type="text" class="form-control" placeholder="Full name" name="ApplicantName">*@
+        @Html.TextBoxFor(m => m._Applicant.ApplicantName, new { @class = "form-control", placeholder = "Full name", title = "Full name" })
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div>
+    </div>  @Html.ValidationMessageFor(m => m._Applicant.FatherName, "", new { @class = "text-red" })
+    <div class="input-group mb-3">
+        @*<input type="text" class="form-control" placeholder="Father name" title="Father Name" name="FatherName">*@
+        @Html.TextBoxFor(m => m._Applicant.FatherName, new { @class = "form-control", placeholder = "Father name", title = "Father name" })
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user-alt"></span>
+            </div>
+        </div>
+    </div>@Html.ValidationMessageFor(m => m._Applicant.DOB, "", new { @class = "text-red" })
+    <div class="input-group mb-3">
+        @*<input type="text" class="form-control" placeholder="Date of birth" title="Date of birth" name="DOB" id="DOB">*@
+        @Html.TextBoxFor(m => m._Applicant.DOB, new { @class = "form-control", placeholder = "Date of birth (mm/dd/yyyy)", title = "Date of birth", id = "DOB" })
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-calendar-alt"></span>
+            </div>
+        </div>
+    </div>@Html.ValidationMessageFor(m => m._Applicant.MobileNo, "", new { @class = "text-red" })
+    <div class="input-group mb-3">
+        @*<input type="tel" class="form-control" placeholder="Mobile Number" title="Mobile Number" name="MobileNo">*@
+        @Html.TextBoxFor(m => m._Applicant.MobileNo, new { type = "tel", @class = "form-control", placeholder = "Mobile Number", title = "Mobile Number" })
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-mobile-alt"></span>
+            </div>
+        </div>
+    </div>@Html.ValidationMessageFor(m => m._Applicant.EmailID, "", new { @class = "text-red" })
+    <div class="input-group mb-3">
+        @*<input type="email" class="form-control" placeholder="Email" name="EmailID">*@
+        @Html.TextBoxFor(m => m._Applicant.EmailID, new { type = "email", @class = "form-control", placeholder = "Email ID", title = "Email ID" })
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+            </div>
+        </div>
+    </div> @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-red" })
+    <div class="input-group mb-3">
+        @*<input type="password" class="form-control" placeholder="Password" name="Password">*@
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Dream Jobs Password", title = "Enter your Dream Jobs Notification Password" })
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input type="password" class="form-control" placeholder="Retype password" name="ConfirmPassword">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="icheck-primary">
+                <input type="checkbox" id="agreeTerms" name="terms">
+                <label for="agreeTerms">
+                    I agree to the <a href="#">terms</a>
+                </label>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+        <!-- /.col -->
+    </div>
+
+}
+<a href="@Url.Action("LogOn","Account")" class="text-center">I  have already registered</a>
+
+@section scripts{
+    <script src="@Url.Content("~/Content/plugins/datepicker/bootstrap-datepicker.js")"></script>
+<script src="@Url.Content("~/Content/plugins/select2/js/select2.full.min.js")"></script>
+<script>
+    $(function () {
+
+        $('.select2').select2();
+
+        var date = new Date();
+        var d = new Date();
+        d.setDate(date.getDate() - 5110);
+
+        var sd = new Date();
+        sd.setDate(date.getDate() - 25000);
+
+
+
+        //Date picker
+        $('#DOB').datepicker({
+            autoclose: true
+            , dateFormat: 'yyyy-mm-dd',
+            endDate: d,
+            startDate: sd
+        });
+
+
+    });
+</script>
+
+    }

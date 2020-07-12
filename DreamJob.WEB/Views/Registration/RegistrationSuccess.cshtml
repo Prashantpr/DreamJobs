@@ -1,0 +1,25 @@
+﻿@model DJ_Entity.Registration
+
+@{
+    ViewBag.Title = "Registration Success";
+    Layout = "~/Views/Shared/_RegistrationLayout.cshtml";
+}
+
+<p class="login-box-msg">Register a new membership success</p>
+
+
+    @if (ViewBag.ErrorMessage != null)
+{
+        <p class="alert-default-danger">
+            @ViewBag.ErrorMessage
+        </p>
+}
+else
+{
+    <p class="alert-default-success">
+        Hi @Model._Applicant.ApplicantName, you are successfully registered!
+    </p>
+}
+<br />Use your login crentials for <a href="@Url.Action("Index", "Home")">Login</a> into your account.
+
+

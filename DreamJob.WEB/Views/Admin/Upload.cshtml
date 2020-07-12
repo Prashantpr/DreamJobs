@@ -1,0 +1,141 @@
+﻿@model System.Data.DataTable
+@*@model CRM.WEB.Models.DataUploadVM*@
+@using System.Data;
+
+
+@{
+    ViewBag.Title = "Upload Question Set";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")">Home</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    @using (Html.BeginForm("Upload", "Admin", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        
+
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="callout callout-warning">
+                            <div class="row">
+                                <div class="col-6">
+                                    @Html.ValidationSummary()
+                                    @ViewBag.Message
+                                </div>
+                                <div class="col-6 right">
+                                    @*<i class='fa fa-paw'></i>@Html.ActionLink(@HttpUtility.HtmlDecode("Download Format"), "DownloadFormat", "Admin", new { @class = "btn btn-app bg-aqua", title = "Download format of excel file" })*@
+                                    <a href='@Url.Content("~/Admin/DownloadFormat")' title="Download format of excel file" class="btn btn-social bg-aqua btn-sm float-right"><i class="fa fa-download"></i> Download Format</a>
+                                    <a href='@Url.Content("~/Reports/Report?q=DataUploadHistory")' title="View Upload History" class="btn btn-social bg-orange btn-sm float-right"><i class="fa fa-shopping-cart"></i> View Upload History</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="callout callout-info">
+                            <div class="row">
+                                <div class="col-md-1">Job Type</div>
+                                <div class="col-md-2">
+                                    <select name="CampaignType" class="form-control"></select>
+                                </div>
+
+
+                                <div class="col-md-2 col-lg-2 text-right">Select excel file</div>
+                                @*<div class="col-md-4 col-lg-4"><input type="file" id="dataFile" name="upload" class="btn btn-file" /></div>*@
+                                @*<div class="col-md-1 col-lg-1"><input type="submit" value="Upload" class="btn btn-default" /></div>*@
+                                <div class="col-md-4 col-lg-4">
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="dataFile" name="upload">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            @*<span class="input-group-text" id="">Upload</span>*@
+                                            <input type="submit" value="Upload" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    <div class="card-body">
+                        @if (Model != null)
+                        {
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        @foreach (DataColumn col in Model.Columns)
+                                        {
+                                            <th>@col.ColumnName</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (DataRow row in Model.Rows)
+                                    {
+                                        <tr>
+                                            @foreach (DataColumn col in Model.Columns)
+                                            {
+                                                <td>@row[col.ColumnName]</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    }
+</section>
+
+
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            
+
+            var CampaignType = $('[name="CampaignType"]');
+            $.ajax({
+                url: "@Url.Action("GetJobType", "Admin")",
+                type: "GET",
+            dataType: "json",
+            success: function (data) {
+                CampaignType.html('');
+                CampaignType.html(data);
+            },
+            error: function (data) {
+                alert(data.toString());
+            }
+            });
+
+           
+
+
+        });
+    </script>
+}

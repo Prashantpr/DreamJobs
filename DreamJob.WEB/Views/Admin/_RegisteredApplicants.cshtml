@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DJ_Entity.Registration>
+@{int counter=1;}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Registration Report</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>RegistrationDate</th>
+                    <th>ApplicantID</th>
+                    <th>ApplicantName</th>
+                    <th>FatherName</th>
+                    <th>DOB(mm/dd/yyyy)</th>
+                    <th>MobileNo</th>
+                    <th>EmailID</th>
+                    <th>JobTitle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                <tr>
+                    <td>@(counter++).</td>
+                    <td>@item.RegistrationDate</td>
+                    <td>@item._Applicant.ApplicantID</td>
+                    <td>@item._Applicant.ApplicantName</td>
+                    <td>@item._Applicant.FatherName</td>
+                    <td>@string.Format("{0:MM/dd/yyyy}",item._Applicant.DOB)</td>
+                    <td>@item._Applicant.MobileNo</td>
+                    <td>@item._Applicant.EmailID</td>
+                    <td>@item.AppliedJob.JobTitle</td>
+                </tr>
+                }
+            </tbody>
+            </table>
+
+
+</div>
+    <!-- /.card-body -->
+</div>

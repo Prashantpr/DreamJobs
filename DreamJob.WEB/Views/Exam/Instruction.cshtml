@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Instruction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Examination Instructions</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+           
+            <div class="callout callout-info">
+                <h5>Before  beginning  the  exam: </h5>
+                <ol>
+                    <li>Make  sure  you  have  a  good  internet  connection.</li>
+                    <li>Log  out  of  Dream Jobs Notification  and  then  back  in  to  Dream Jobs Notification  before  you  begin.    This  will   help  with  connectivity  issues.   </li>
+                    <li>If  you  are  taking  the  exam  late  in  the  day,  it  is  recommended  that  you  reboot  your   computer  before  beginning  to  free  up  memory  resources  from  other  programs  on   your  computer.   </li>
+                    <li>Shut  down  all  Instant  Messaging  tools  (Skype,  AIM,  MSN  Messenger, Facebook Messenger)  and  Email   programs  as  they  can  conflict  with  Dream Jobs Notification.   </li>
+                    <li>Maximize  your  browser  window  before  starting  the  test.    Minimizing  the  browser   window  during  the  exam  can  prevent  the  submission  of  your  exam.   </li>
+                    <li>When  you  begin  the  exam  click  the  link  only  ONCE  to  launch  the  test.    Double   clicking  can  lock  the  test. </li>
+                </ol>
+                
+            </div>
+
+            <div class="callout callout-warning">
+                <h5>During  the  exam:  </h5>
+                <ol>
+                    <li>Do  not  resize  (minimize)  the  browser  during  the  test. </li>
+                    <li>Never  click  the  “Back”  button  on  the  browser.    This  will  take  you  out  of  the  test  and   prevent  Dream Jobs Notification  from  tracking  your  selected  answers.   </li>
+                    <li>Avoid  using  the  Alt+Tab keys from keyboard  if  present.</li>
+                    <li>Click  the  “Submit”  button  to  submit  your  exam.    Do  not  press  “Enter”  on  the   keyboard  to  submit  the  exam. </li>
+                    <li>Save  your  test  using  the  “Save”  button  periodically  during  the  exam.</li>
+                </ol>
+            </div>
+
+            <div class="callout callout-danger">
+                <h5>Instructions  for  accessing  the  Exam:  </h5>
+                <ol>
+                    <li>Read  the  notes  above  titled  “Before  beginning  the  exam”  and  “During  the  exam.” </li>
+                    <li>Do  not  begin  until  you  are  absolutely  ready  to  start!  </li>
+                    <li>You  will  have  1  hour  to  complete  your  exam.</li>
+                    <li>The  exam  must  be  completed  in  one  sitting.    You  can  only  open  it  once.  </li>
+                    <li>Click  the  “Submit”  button  in  the  bottom  right  corner  when  you  are  done  to  submit   your  work.     If  you  encounter  problems  accessing  or  submitting  your  exam,  you  must  contact  your   instructor  immediately  by  phone.</li>
+                    <li>If you are unsure about anything do not start your examination and close the window</li>
+                    <li>If you are clear about everything, start your examination by clicking Start Examination button below</li>
+                </ol>
+            </div>
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <a href="@Url.Action("QuestionPaper","Exam")" class="btn btn-outline-danger float-none">Start Examination</a>
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+</section>
+<!-- /.content -->

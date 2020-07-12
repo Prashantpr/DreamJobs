@@ -1,0 +1,113 @@
+﻿
+@if (!User.IsInRole("Admin"))
+{
+    <nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Dashboard
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="@Url.Action("Index","Home")" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>My Dashboard</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("AppliedJob","Home")" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    My Applied Job
+                    <span class="right badge badge-danger">New</span>
+                </p>
+            </a>
+        </li>
+       
+    </ul>
+</nav>
+}
+else
+{ 
+    <nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Dashboard
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="@Url.Action("Index","Admin")" class="nav-link">
+                        <i class="far fa-arrow-alt-circle-right nav-icon"></i>
+                        <p>Admin Dashboard</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("RegisteredApplicants","Admin")" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                    Registered Applicants
+                    <span class="right badge badge-danger">New</span>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-anchor"></i>
+                <p>
+                    Settings
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="@Url.Action("Upload","Admin")" class="nav-link">
+                        <i class="far fa-arrow-alt-circle-right nav-icon"></i>
+                        <p>Upload Question Set</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-record-vinyl"></i>
+                <p>
+                    Reports
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="@Url.Content("~/Reports/Report?q=DataUploadHistory")" class="nav-link">
+                        <i class="far fa-arrow-alt-circle-right nav-icon"></i>
+                        <p>Uploaded Question Sets</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Content("~/Reports/Report?q=ExamSummary")" class="nav-link">
+                        <i class="far fa-arrow-alt-circle-right nav-icon"></i>
+                        <p>Review result</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+       
+    </ul>
+</nav>
+}

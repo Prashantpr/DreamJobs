@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ONLINE RECRUITMENT INTERVIEW</title>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body, h1 {
+            font-family: "Raleway", sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        .bgimg {
+            background-image: url('/Content/dist/img/forestbridge.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+    <link href="~/Content/Intro/css/style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="~/Content/Intro/src/fullclip.min.js"></script> 
+</head>
+<body>
+  
+    
+    <div class="fullBackground w3-display-container w3-animate-opacity w3-text-white">
+        <div class="w3-display-topleft w3-padding-large w3-xlarge">
+            &nbsp;
+        </div>
+        <div class="w3-display-middle">
+            <h1 class="caption w3-animate-top w3-center">ONLINE RECRUITMENT INTERVIEW</h1>
+            <hr class="w3-border-grey" style="margin:auto;width:40%">
+            <p class="w3-large w3-center">
+                <a href="@Url.Action("Index", "Home")" class="w3-btn w3-cyan">Login</a>
+                <a href="@Url.Action("Index", "Registration")" class="w3-btn w3-orange">Register</a>
+            </p>
+        </div>
+        <div class="w3-display-bottomleft w3-padding-large">
+            Powered by <a href="#" target="_blank">Squirrel</a>
+        </div>
+    </div>
+     
+
+    <script>
+        $('.fullBackground').fullClip({
+            images: ['https://unsplash.it/1600/1200/?random', 'https://unsplash.it/1601/1201/?random', '/Content/dist/img/forestbridge.jpg'],
+            transitionTime: 2000,
+            wait: 5000
+        });
+    </script>
+</body>
+</html>

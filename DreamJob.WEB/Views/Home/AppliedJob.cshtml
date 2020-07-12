@@ -1,0 +1,128 @@
+﻿@model IEnumerable<DJ_Entity.Registration>
+
+@{
+    ViewBag.Title = "Applied Job";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Enrollment Detail</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <dl class="row">
+                  <dt class="col-sm-4">Registration Date</dt>
+                  <dd class="col-sm-8">@item.RegistrationDate</dd>
+                  <dt class="col-sm-4">Job Title</dt>
+                  <dd class="col-sm-8">@item.AppliedJob.JobTitle</dd>
+                  <dd class="col-sm-8 offset-sm-4">@item.AppliedJob.JobDescription</dd>
+                </dl>
+                
+                    <input type="hidden" id="ApplicantID" value="@item._Applicant.ApplicantID" />
+                }
+                
+            }
+
+           
+            
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <div id="ResultSummary">Please wait while system is checking your examination status..</div>
+            <div id="ViewInstructions" style="display:none">
+                Click on View Instructions button before start your examination<br />
+                <a href="@Url.Action("Index","Exam")" class="btn btn-outline-danger float-none">View Instructions</a>
+            </div>
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+</section>
+<!-- /.content -->
+
+
+@section Scripts {
+@Scripts.Render("~/bundles/jqueryval")
+@*@Scripts.Render("~/Scripts/jquery.min.1.11.1.js")*@
+@Scripts.Render("~/Scripts/jquery.table2excel.min.js")
+
+<script>
+
+    $(document).ready(function () {
+        GetExamDetail();
+    });
+
+        function GetExamDetail() {
+
+            var ApplicantID = $('#ApplicantID').val();
+            var AttemptID = "0";
+
+            //$('#ExamDetail').html('Please wait...');
+            //$('#ResultSummary').html('Please wait while system is checking your examination status..');
+            //$('[name="btnShow"]').attr({ 'value': 'Please wait' });
+            $.ajax({
+                url: "@Url.Action("GetExamDetail", "Reports")",
+                type: "POST",
+                data: { "ApplicantID": ApplicantID, "AttemptID": AttemptID },
+
+                dataType: "json",
+                headers: {
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                },
+                success: function (data) {
+                    if (data.ReturnStatus == "1") {
+                        $('#ResultSummary').html('');
+                        $('#ResultSummary').html(data.ReturnData2);
+                    }
+                    else {
+                        $('#ResultSummary').html('');
+                        $('#ViewInstructions').css("display", "block");
+                    }
+                },
+                error: function (data) {
+                    //$('#ExamDetail').html(data.ReturnMessage)
+                    $('#ResultSummary').html('');
+                    alert(data.ReturnMessage);
+                }
+            });
+        }
+
+</script>
+
+    }
+
