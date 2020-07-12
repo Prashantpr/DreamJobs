@@ -1,0 +1,5 @@
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_DbBridge\bin\Debug\DJ_DbBridge.dll
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_DbBridge\bin\Debug\DJ_DbBridge.pdb
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_DbBridge\obj\Debug\DJ_DbBridge.csprojResolveAssemblyReference.cache
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_DbBridge\obj\Debug\DJ_DbBridge.dll
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\DJ_DbBridge\obj\Debug\DJ_DbBridge.pdb
