@@ -1,0 +1,10 @@
+D:\7MY_Projects\AapKaFinance\AapKaFinance\CRM.Entity\bin\Debug\CRM.Entity.dll
+D:\7MY_Projects\AapKaFinance\AapKaFinance\CRM.Entity\bin\Debug\CRM.Entity.pdb
+D:\7MY_Projects\AapKaFinance\AapKaFinance\CRM.Entity\obj\Debug\CRM.Entity.dll
+D:\7MY_Projects\AapKaFinance\AapKaFinance\CRM.Entity\obj\Debug\CRM.Entity.pdb
+D:\7MY_Projects\AapKaFinance\AapKaFinance\CRM.Entity\obj\Debug\CRM.Entity.csprojResolveAssemblyReference.cache
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\CRM.Entity\bin\Debug\CRM.Entity.dll
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\CRM.Entity\bin\Debug\CRM.Entity.pdb
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\CRM.Entity\obj\Debug\CRM.Entity.csprojResolveAssemblyReference.cache
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\CRM.Entity\obj\Debug\CRM.Entity.dll
+D:\1_SabbirSir\DreamJobsNotification\DreamJobs\CRM.Entity\obj\Debug\CRM.Entity.pdb
